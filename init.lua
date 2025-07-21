@@ -378,4 +378,9 @@ function M.show_prev_output()
   open_prev_output_preview(output_buf, M.last_output, height)
 end
 
+function M.init()
+  vim.keymap.set('n', '<leader>p', ':lua require("insert-ai-nvim").run_inference()<CR>', opts)
+  vim.keymap.set('n', '<leader>ao', ':lua require("insert-ai-nvim").show_prev_output()<CR>', opts)
+end
+
 return M
