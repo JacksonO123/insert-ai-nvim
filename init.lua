@@ -337,7 +337,7 @@ function M.run_inference()
         local new_data = clone_buffer_with_marker(buf, marker, row, col)
 
         local final_prompt = string.format([[
-Use this code as context for the following prompt, and output only the code that is specified to be generated at the position of %s:
+Use this code as context for the following prompt, and output only the code that is specified to be generated at the position of this cursor marker %s:
 (.%s file)
 ```
 %s
@@ -347,6 +347,7 @@ Use the context of the cursor position, and cursor position marker within this p
 Generate code based on this prompt:
 "%s"
 Generate only the code for this new addition. *important*: Exclude any quotes or language specification surrounding your output.
+Do not include the cursor marker string in your generated output
 Your output is in text form, not markdown, so avoid using markdown features.
 ]], marker, file_ext, new_data, row, col, prompt)
 
